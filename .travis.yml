@@ -23,7 +23,7 @@ addons:
         - hvr-ghc
     packages:
         - g++-4.8
-        - libboost1.55-all-dev
+        - libboost1.58-all-dev
         - cabal-install-1.22
         - ghc-7.8.4
         - ghc-7.6.3
