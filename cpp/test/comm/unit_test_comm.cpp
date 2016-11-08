@@ -1793,8 +1793,10 @@ class GenericTransportTests
 
 
             UT_AssertAreEqual(stream.str(), "1:snd-req,2:snd-req,2:rcv-req,1:rcv-req,1:snd-resp,2:snd-resp,2:rcv-resp,1:rcv-resp.");
-            std::stringstream emptyStream;
-            stream.swap(emptyStream);
+
+            // Reset the stream
+            stream.clear();
+            stream.str(std::string());
         }
     }
 
