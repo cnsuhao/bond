@@ -61,7 +61,7 @@ public:
     //
     // Construct transport:
     //
-    //  @param threadService: shared instance of ThreadService;
+    //  @param threadService: shared instance of ThreadService; must not be null
     //  @param allocator: allocator instance.
     //
     explicit
@@ -69,7 +69,9 @@ public:
                    const Allocator& allocator = Allocator())
         : m_allocator(allocator)
         , m_threadService(threadService)
-    {}
+    {
+        BOOST_ASSERT(nullptr != m_threadService);
+    }
 
     typedef typename PacketTransport<SocketAddress, WireProtocol>::Address Address;
 
@@ -1034,8 +1036,10 @@ private:
                     const boost::shared_ptr<INetworkServerSink>& handler,
                     const boost::shared_ptr<ThreadService>& threadService)
             : m_threadService(threadService)
-            , m_context(boost::make_shared<EpoxyServerContext>(allocator, address, handler, threadService->io_service()))
         {
+            BOOST_ASSERT(nullptr != m_threadService);
+            m_context = boost::make_shared<EpoxyServerContext>(allocator, address, handler, m_threadService->io_service());
+
             //
             // Start accepting incoming connections.
             //
