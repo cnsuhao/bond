@@ -922,8 +922,7 @@ private:
         {
             void OnAccept()
             {
-                const boost::asio::ip::tcp::endpoint endpoint = m_socket.remote_endpoint();
-                const SocketAddress address(endpoint);
+                const SocketAddress address(m_socket.remote_endpoint());
 
                 BOND_LOG(LOG_INFO, "EpoxyServerContext",
                          "Accepted connection from: " << address);
