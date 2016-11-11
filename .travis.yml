@@ -18,12 +18,12 @@ env:
 addons:
   apt:
     sources:
-        - boost-latest
+        - sourceline: 'ppa:kzemek/boost'
         - ubuntu-toolchain-r-test
         - hvr-ghc
     packages:
         - g++-4.8
-        - libboost1.58-all-dev
+        - boost1.58
         - cabal-install-1.22
         - ghc-7.8.4
         - ghc-7.6.3
