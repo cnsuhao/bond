@@ -1,4 +1,6 @@
-sudo: false
+dist: trusty
+# trusty requires virtualization, which is set by 'sudo: required'
+sudo: required
 language: csharp
 os:
     - linux
